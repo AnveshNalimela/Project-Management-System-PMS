@@ -3,9 +3,9 @@ import "./index.css";
 
 interface Task {
   title: string;
-  date: string;
+  dueDate: string;
+  completedAtDate: string;
   assignee: string;
-  status: string;
 }
 
 function App() {
@@ -21,30 +21,26 @@ function App() {
           <h1 className="text-2xl m-2 font-bold ">Pending</h1>
           <TaskCard
             title="Build the website with static content"
-            date="10th April"
-            assinge="Rohit S"
-            status="Due on"
+            dueDate="10th April"
+            assigneeName="Rohit S"
           />
           <TaskCard
             title="Add blog"
-            date="22th March"
-            assinge="Rohit P"
-            status="Due on"
+            dueDate="22th March"
+            assigneeName="Rohit P"
           />
         </div>
         <div className="border-4 p-5 mx-10 border-black w-1/4 rounded ">
           <h1 className="text-2xl m-2 font-bold ">Done</h1>
           <TaskCard
             title="Design the mockup "
-            date="10th April"
-            assinge="Rohit M"
-            status="Completed on"
+            completedAtDate="10th April"
+            assigneeName="Rohit M"
           />
           <TaskCard
             title="Get approval from principal"
-            date="22th March"
-            assinge="Ajay S"
-            status="Completed on"
+            completedAtDate="22th March"
+            assigneeName="Ajay S"
           />
         </div>
       </div>
