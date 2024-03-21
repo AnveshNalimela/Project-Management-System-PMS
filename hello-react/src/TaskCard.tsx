@@ -1,3 +1,4 @@
+import React from "react";
 import "./TaskCard.css";
 
 interface TaskCardProps {
@@ -6,6 +7,7 @@ interface TaskCardProps {
   completedAtDate?: string;
   assigneeName?: string;
 }
+
 const TaskCard: React.FC<TaskCardProps> = ({
   title,
   dueDate,
