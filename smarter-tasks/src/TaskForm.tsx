@@ -15,7 +15,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
     this.state = {
       title: "",
       description: "",
-      duedate: new Date().toISOString().split("T")[0],
+      duedate: "",
     };
   }
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
