@@ -7,53 +7,58 @@ interface TaskFormProps {
 interface TaskFormState {
   title: string;
   description: string;
-  duedate: string;
+  dueDate: string;
 }
-class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
-  constructor(props: TaskFormProps) {
-    super(props);
-    this.state = {
-      title: "",
-      description: "",
-      duedate: "",
-    };
-  }
-  addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
+
+const TaskForm = (props: TaskFormProps) => {
+  const [formState, setFormState] = React.useState<TaskFormState>({
+    title: "",
+    description: "",
+    dueDate: "",
+  });
+  const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event: {
+    target: { value: any };
+  }) => {
+    console.log(`${event.target.value}`);
+    setFormState({ ...formState, title: event.target.value });
+  };
+  const descriptionChanged: React.ChangeEventHandler<
+    HTMLInputElement
+  > = (event: { target: { value: any } }) => {
+    console.log(`${event.target.value}`);
+    setFormState({ ...formState, description: event.target.value });
+  };
+  const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event: {
+    target: { value: any };
+  }) => {
+    console.log(`${event.target.value}`);
+    setFormState({ ...formState, dueDate: event.target.value });
+  };
+
+  const addTask: React.FormEventHandler<HTMLFormElement> = (event: {
+    preventDefault: () => void;
+  }) => {
     event.preventDefault();
-    const newTask = {
-      title: this.state.title,
-      description: this.state.description,
-      duedate: this.state.duedate,
-    };
-    this.props.addTask(newTask);
-    this.setState({ title: "", description: "" });
+    console.log(`Submitted the form with`);
+    if (formState.title.length === 0 || formState.dueDate.length === 0) {
+      return;
+    }
+    props.addTask(formState);
+    setFormState({ title: "", description: "", dueDate: "" });
   };
 
-  titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ title: event.target.value });
-  };
-  descriptionChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ description: event.target.value });
-  };
-  duedateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ duedate: event.target.value });
-  };
-
-  render() {
-    return (
+  return (
+    <>
       <div>
         <h2 className="text-lg font-semibold text-white">Task form</h2>
-        <form onSubmit={this.addTask}>
+        <form onSubmit={addTask}>
           <input
             id="todoTitle"
             className="rounded mr-5 px-5 text-lg w-full mt-2 mb-4 h-10"
             type="text"
             placeholder="Enter the Task title"
-            value={this.state.title}
-            onChange={this.titleChanged}
+            value={formState.title}
+            onChange={titleChanged}
             required
           />
           <input
@@ -61,15 +66,15 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
             className="rounded mr-5 px-4 py-2 text-lg w-full h-20  mb-4 "
             type="text"
             placeholder="Enter the Task description"
-            value={this.state.description}
-            onChange={this.descriptionChanged}
+            value={formState.description}
+            onChange={descriptionChanged}
           />
           <input
             id="todoDueDate"
             className="rounded mr-5 px-5 text-lg w-100 h-10"
             type="Date"
-            value={this.state.duedate}
-            onChange={this.duedateChanged}
+            value={formState.dueDate}
+            onChange={dueDateChanged}
             required
           />
           <button
@@ -81,7 +86,8 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
           </button>
         </form>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
+
 export default TaskForm;
