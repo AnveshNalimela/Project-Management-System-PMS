@@ -22,7 +22,7 @@ const TaskList = (props: Props) => {
       />
       <button
         onClick={() => handleDelete(idx)}
-        className="ml-10 p-2 w-full deleteTaskButton rounded hover:bg-gray-300 transition duration-300 ease-in-out"
+        className="ml-10 p-2 w-10 deleteTaskButton rounded hover:bg-gray-300 transition duration-300 ease-in-out"
       >
         <img
           className="w-5 h-5 rounded ml-30"
