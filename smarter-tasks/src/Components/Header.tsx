@@ -14,6 +14,14 @@ const Header = () => {
           <div className="flex items-center w-1/3 justify-center">
             <h2 className="text-white text-lg font-bold">Smarter Tasks</h2>
           </div>
+          <div className="flex items-center w-1/3 justify-end">
+            <a
+              href="/signin"
+              className="ml-6 mr-5 text-gray-300 hover:text-white"
+            >
+              Signout
+            </a>
+          </div>
         </div>
       </div>
     </nav>

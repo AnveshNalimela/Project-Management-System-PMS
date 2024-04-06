@@ -12,7 +12,7 @@ const TaskList = (props: Props) => {
     props.onDelete(idx);
   };
 
-  const Tasklist = props.tasks.map((task, idx) => (
+  const tasklist = props.tasks.map((task, idx) => (
     <div className="bg-white border-slate-200 shadow-md border mt-4 rounded">
       <Task
         key={idx}
@@ -31,7 +31,11 @@ const TaskList = (props: Props) => {
       </button>
     </div>
   ));
-  return <ul>{Tasklist}</ul>;
+  if (!props.tasks) {
+    return <div>No tasks available</div>;
+  } else {
+    return <ul>{tasklist}</ul>;
+  }
 };
 
 export default TaskList;
