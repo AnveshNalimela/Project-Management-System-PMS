@@ -4,12 +4,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./Layout";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./pages/HomePage";
 
-import Notfound from "./Pages/Notfound";
-import Signin from "./Pages/Signin";
-import TaskDetailsPage from "./Pages/TaskDetailsPage";
-import TaskListPage from "./Pages/TaskListPage";
+import Notfound from "./pages/Notfound";
+import Signin from "./pages/Signin";
+import TaskDetailsPage from "./pages/TaskDetailsPage";
+import TaskListPage from "./pages/TaskListPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
