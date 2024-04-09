@@ -15,9 +15,13 @@ const TaskList = (props: Props) => {
     return <div className="ml-10 my-4 text-white">No tasks available</div>;
   } else {
     const tasklist = props.tasks.map((task, idx) => (
-      <div className="bg-white border-slate-200 shadow-md border mt-4 rounded">
+      <div
+        key={idx}
+        className="bg-white border-slate-200 shadow-md border mt-4 rounded"
+      >
         <Task
           key={idx}
+          id={idx}
           title={task.title}
           description={task.description}
           dueDate={task.dueDate}

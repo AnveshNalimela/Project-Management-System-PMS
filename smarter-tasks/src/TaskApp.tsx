@@ -16,8 +16,10 @@ const TaskApp = () => {
   );
 
   const addTask = (task: TaskItem) => {
+    console.log(taskAppState.tasks);
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
   };
+
   const deleteTask = (idx: number) => {
     const updatedTasks = [...taskAppState.tasks];
     updatedTasks.splice(idx, 1);
@@ -25,7 +27,7 @@ const TaskApp = () => {
   };
 
   return (
-    <div className="container bg-blue-400 px-10 py-10 max-w-4xl h-screen mx-auto">
+    <div className="container bg-blue-400 px-10 py-10 max-w-4xl  mx-auto">
       <h1 className="text-5xl mb-2 font-bold text-slate-700">Smarter Tasks</h1>
       <h1 className="text-xl mb-6 text-slate-600">
         <span className="font-bold">Project: </span>

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const getStoredValue = <T>(key: string, defaultValue: T): T => {
   const savedItem = localStorage.getItem(key);
   if (savedItem) {
+    console.log(JSON.parse(savedItem));
     return JSON.parse(savedItem);
   }
   return defaultValue;
 };
-
-export const useLocalStorage = <T>(
+export const useLocalStorage = <T,>(
   key: string,
   defaultValue: T
 ): [T, React.Dispatch<React.SetStateAction<T>>] => {
