@@ -1,12 +1,8 @@
 import React from "react";
 
 const Dashboard: React.FC = () => {
-  const handleLogout = () => {
-    localStorage.removeItem("userData");
-    localStorage.removeItem("authToken");
-    window.location.href = "/signin";
-    console.log("Log out Succesfully and user session Deleted");
-  };
+  console.log("In dashBoard");
+
   const data = localStorage.getItem("userData");
   let userData;
 
@@ -17,6 +13,13 @@ const Dashboard: React.FC = () => {
     userData = null; // Or any other default value
   }
   console.log(userData.name);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("authToken");
+    window.location.href = "/signin";
+    console.log("Log out Succesfully and user session Deleted");
+  };
   return (
     <>
       {" "}
@@ -39,19 +42,19 @@ const Dashboard: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700">
               Name:
             </label>
-            <p className="text-gray-900">{userData.name}</p>
+            <p className="text-gray-900">{userData?.name}</p>
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Email:
             </label>
-            <p className="text-gray-900">{userData.email}</p>
+            <p className="text-gray-900">{userData?.email}</p>
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               ID:
             </label>
-            <p className="text-gray-900">{userData.id}</p>
+            <p className="text-gray-900">{userData?.id}</p>
           </div>
         </div>
       </div>
