@@ -5,13 +5,15 @@ const Dashboard: React.FC = () => {
 
   const data = localStorage.getItem("userData");
   let userData;
-
+  console.log(data);
   if (data !== null) {
     userData = JSON.parse(data);
   } else {
     // Handle the case where "userData" is not found in localStorage
     userData = null; // Or any other default value
   }
+
+  console.log(userData);
   console.log(userData.name);
 
   const handleLogout = () => {
