@@ -24,10 +24,9 @@ const TaskDetailsPage: React.FC = () => {
       <div className="bg-white shadow-md rounded-md p-4 m-8">
         <div className="justify-between items-center mb-4">
           <h3 className="text-lg font-medium">{task?.title}</h3>
-
-          <p className="text-gray-600">{task?.description}</p>
-          <p className="text-gray-600">{task?.dueDate}</p>
         </div>
+        <p className="text-gray-600">{task?.description}</p>
+        <p className="text-gray-600">{task?.dueDate}</p>
       </div>
     );
   } else {
