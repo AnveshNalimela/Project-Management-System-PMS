@@ -8,7 +8,14 @@ const Dashboard: React.FC = () => {
     console.log("Log out Succesfully and user session Deleted");
   };
   const data = localStorage.getItem("userData");
-  const userData = JSON.parse(data);
+  let userData;
+
+  if (data !== null) {
+    userData = JSON.parse(data);
+  } else {
+    // Handle the case where "userData" is not found in localStorage
+    userData = null; // Or any other default value
+  }
   console.log(userData.name);
   return (
     <>
