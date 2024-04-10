@@ -18,7 +18,6 @@ const Dashboard: React.FC = () => {
     // Handle the case where "userData" is not found in localStorage
     userData = null; // Or any other default value
   }
-  console.log(userData.name);
 
   const handleLogout = () => {
     localStorage.removeItem("userData");
