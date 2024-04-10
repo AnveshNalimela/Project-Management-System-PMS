@@ -20,14 +20,14 @@ const TaskDetailsPage: React.FC = () => {
   let num: number = Number(id);
   if (num < Number(taskAppState.tasks.length)) {
     const task = taskAppState.tasks[num];
-    console.log("task:", taskAppState.tasks.length);
     return (
       <div className="bg-white shadow-md rounded-md p-4 m-8">
-        <div className="flex justify-between items-center mb-4">
+        <div className="justify-between items-center mb-4">
           <h3 className="text-lg font-medium">{task?.title}</h3>
+
+          <p className="text-gray-600">{task?.description}</p>
+          <p className="text-gray-600">{task?.dueDate}</p>
         </div>
-        <p className="text-gray-600">{task?.description}</p>
-        <p className="text-gray-600">{task?.dueDate}</p>
       </div>
     );
   } else {
