@@ -6,18 +6,13 @@ const Dashboard: React.FC = () => {
   const data = localStorage.getItem("userData");
   let userData;
 
-  if (data !== undefined && data !== null) {
-    try {
-      userData = JSON.parse(data);
-    } catch (error) {
-      // Handle the case where data is not valid JSON
-      console.error("Error parsing JSON:", error);
-      userData = null; // Or any other default value
-    }
+  if (data !== null) {
+    userData = JSON.parse(data);
   } else {
     // Handle the case where "userData" is not found in localStorage
     userData = null; // Or any other default value
   }
+  console.log(userData.name);
 
   const handleLogout = () => {
     localStorage.removeItem("userData");
