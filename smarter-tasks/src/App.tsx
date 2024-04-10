@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
-
 import Notfound from "./pages/Notfound";
 import Signin from "./pages/Signin";
 import TaskDetailsPage from "./pages/TaskDetailsPage";
@@ -42,8 +41,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/notfound", element: <Notfound /> },
-  { path: "*", element: <Notfound /> },
+  // { path: "/notfound", element: <Notfound /> },
+  // { path: "*", element: <Navigate to="/notfound" replace /> },
 ]);
 
 const App = () => {
