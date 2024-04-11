@@ -1,44 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./pages/dashboard/index.tsx";
-import Notfound from "./pages/Notfound";
-import Signin from "./pages/signin/index.tsx";
-import Signup from "./pages/signup/index.tsx";
-import ProtectedRoute from "./ProtectedRoute";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Signup />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
-  },
-  {
-    path: "/signin",
-    element: <Signin />,
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <Dashboard />
-      </ProtectedRoute>
-    ),
-  },
-
-  {
-    path: "/notfound",
-    element: <Notfound />,
-  },
-  {
-    path: "*",
-    element: <Notfound />,
-  },
-]);
+// src/App.tsx
+import { useContext } from "react";
+import { RouterProvider } from "react-router-dom";
+import ThemeContext from "./context/theme";
+import router from "./routes";
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const currentTheme = useContext(ThemeContext);
+  console.log(currentTheme);
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 };
-
 export default App;

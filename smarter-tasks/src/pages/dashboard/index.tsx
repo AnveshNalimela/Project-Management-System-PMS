@@ -9,8 +9,7 @@ const Dashboard: React.FC = () => {
   if (data !== null) {
     userData = JSON.parse(data);
   } else {
-    // Handle the case where "userData" is not found in localStorage
-    userData = null; // Or any other default value
+    userData = null;
   }
 
   console.log(userData);
