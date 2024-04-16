@@ -1,9 +1,5 @@
 import React, { useEffect, useReducer } from "react";
 import { API_ENDPOINT } from "../../config/constants";
-interface Project {
-  id: number;
-  name: string;
-}
 interface State {
   projects: Project[];
   isLoading: boolean;
@@ -11,7 +7,11 @@ interface State {
 interface Action {
   type: string;
   payload?: any;
+}interface Project {
+  id: number;
+  name: string;
 }
+
 const reducer = (state: State, action: Action): State => {
   // >>> Dialogue one: In switch statement, we will check the action type and return corresponsing state, like we were doing in the if-statements.
   switch (action.type) {
