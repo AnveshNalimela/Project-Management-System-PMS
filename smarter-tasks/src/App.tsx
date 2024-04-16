@@ -1,14 +1,17 @@
-// src/App.tsx
 import { useContext } from "react";
 import { RouterProvider } from "react-router-dom";
-import ThemeContext from "./context/theme";
+import { ThemeContext } from "./context/theme";
 import router from "./routes";
 
 const App = () => {
-  const currentTheme = useContext(ThemeContext);
-  console.log(currentTheme);
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div>
+    <div
+      className={`h-screen w-full mx-auto py-2 ${
+        theme === "dark" ? "dark" : ""
+      }`}
+    >
       <RouterProvider router={router} />
     </div>
   );
