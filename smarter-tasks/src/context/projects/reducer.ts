@@ -36,7 +36,8 @@ export interface ProjectsState {
 export type ProjectsActions =
   | { type: "FETCH_PROJECTS_REQUEST" }
   | { type: "FETCH_PROJECTS_SUCCESS"; payload: Project[] }
-  | { type: "FETCH_PROJECTS_FAILURE"; payload: string };
+  | { type: "FETCH_PROJECTS_FAILURE"; payload: string }
+  | { type: "ADD_PROJECT_SUCCESS"; payload: Project };
 
 export const reducer = (
   state: ProjectsState = initialState,
@@ -61,6 +62,10 @@ export const reducer = (
         isError: true,
         errorMessage: action.payload,
       };
+    case "ADD_PROJECT_SUCCESS":
+      // Here I'll insert new new project object, which is coming in this
+      // `action.payload`, to the `projects` array present in state.
+      return { ...state, projects: [...state.projects, action.payload] };
     default:
       return state;
   }
