@@ -2,33 +2,64 @@ interface Project {
   id: number;
   name: string;
 }
-interface State {
+
+// Define the initial state
+export const initialState: ProjectsState = {
+  projects: [],
+  isLoading: false,
+  isError: false,
+  errorMessage: "",
+};
+export interface ProjectsState {
   projects: Project[];
   isLoading: boolean;
-}
-interface Action {
-  type: string;
-  payload?: any;
+  isError: boolean;
+  errorMessage: string;
 }
 
-const reducer = (state: State, action: Action): State => {
-  // >>> Dialogue one: In switch statement, we will check the action type and return corresponsing state, like we were doing in the if-statements.
+// Next, I'll comment the `Action` interface
+
+// interface Action {
+//   type: string;
+//   payload?: any;
+// }
+
+// Then I'll define a new type called `ProjectsActions`
+// for all possible combimations of action objects.
+
+// Define the action types and payload
+
+// export type ProjectsActions =
+//   | { type: 'API_CALL_START' }
+//   | { type: 'API_CALL_END'; payload: Project[] }
+//   | { type: 'API_CALL_ERROR'; payload: string }
+export type ProjectsActions =
+  | { type: "FETCH_PROJECTS_REQUEST" }
+  | { type: "FETCH_PROJECTS_SUCCESS"; payload: Project[] }
+  | { type: "FETCH_PROJECTS_FAILURE"; payload: string };
+
+export const reducer = (
+  state: ProjectsState = initialState,
+  action: ProjectsActions
+): ProjectsState => {
   switch (action.type) {
-    case "API_CALL_START":
+    case "FETCH_PROJECTS_REQUEST":
       return {
         ...state,
         isLoading: true,
       };
-    case "API_CALL_END":
+    case "FETCH_PROJECTS_SUCCESS":
       return {
         ...state,
         isLoading: false,
         projects: action.payload,
       };
-    case "API_CALL_ERROR":
+    case "FETCH_PROJECTS_FAILURE":
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
+        isError: true,
+        errorMessage: action.payload,
       };
     default:
       return state;
