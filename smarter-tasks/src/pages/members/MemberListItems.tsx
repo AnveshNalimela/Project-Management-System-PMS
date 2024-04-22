@@ -18,6 +18,10 @@ export default function MemberListItems() {
   // isLoading, isError and errorMessage property.
   const { members, isLoading, isError, errorMessage } = state;
   const handleRemoveMember = async (id: number) => {
+    if (!dispatch) {
+      console.error("Dispatch is not defined.");
+      return;
+    }
     try {
       // Make DELETE request to remove the member
       await deleteMember(dispatch, id);
