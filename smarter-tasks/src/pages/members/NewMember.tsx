@@ -2,8 +2,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useMembersDispatch } from "../../context/members/context";
 import { addMember } from "../../context/members/actions";
+import { useMembersDispatch } from "../../context/members/context";
 
 // First I'll import the addProject function
 
@@ -13,6 +13,7 @@ type Inputs = {
   password: string;
   name: string;
 };
+
 const NewMember = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,7 +22,7 @@ const NewMember = () => {
 
   // Then I'll call the useProjectsDispatch function to get the dispatch function
   // for projects
-  const dispatchMember = useMembersDispatch();
+  const dispatchMembers = useMembersDispatch();
   const {
     register,
     handleSubmit,
@@ -35,11 +36,11 @@ const NewMember = () => {
   };
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { email, password, name } = data;
-
+    console.log(email, password, name);
     // Next, I'll call the addProject function with two arguments:
     //`dispatchProjects` and an object with `name` attribute.
     // As it's an async function, we will await for the response.
-    const response = await addMember(dispatchMember, {
+    const response = await addMember(dispatchMembers, {
       email,
       password,
       name,
@@ -108,7 +109,7 @@ const NewMember = () => {
                           errors.email ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.name && <span>This field is required</span>}
+                      {errors.email && <span>This field is required</span>}
                       <input
                         id="password"
                         type="password"
@@ -119,7 +120,7 @@ const NewMember = () => {
                           errors.password ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.name && <span>This field is required</span>}
+                      {errors.password && <span>This field is required</span>}
                       <input
                         id="name"
                         type="name"

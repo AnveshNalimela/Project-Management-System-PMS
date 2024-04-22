@@ -7,7 +7,7 @@ const Projects = () => {
         <h2 className="text-2xl font-medium tracking-tight">Projects</h2>
         <NewProject />
       </div>
-      //<ProjectList />
+      <ProjectList />
     </>
   );
 };

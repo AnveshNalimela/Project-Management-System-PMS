@@ -18,7 +18,7 @@ export const fetchMembers = async (dispatch: any) => {
     console.log("Error fetching members:", error);
     dispatch({
       type: "FETCH_MEMBERS_FAILURE",
-      payload: "Unable to load projects",
+      payload: "Unable to load members",
     });
   }
 };
@@ -37,7 +37,7 @@ export const addMember = async (dispatch: any, args: any) => {
       body: JSON.stringify(args),
     });
     if (!response.ok) {
-      throw new Error("Failed to create project");
+      throw new Error("Failed to add memeber");
     }
     const data = await response.json();
     if (data.errors && data.errors.length > 0) {
@@ -55,6 +55,31 @@ export const addMember = async (dispatch: any, args: any) => {
   } catch (error) {
     console.error("Operation failed:", error);
     // Dialogue 5: And for error I'll return status called "ok", with value `false`.
+    return { ok: false, error };
+  }
+};
+
+export const deleteMember = async (dispatch: any, memberId: number) => {
+  try {
+    const token = localStorage.getItem("authToken") ?? "";
+    const response = await fetch(`${API_ENDPOINT}/users/${memberId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete member");
+    }
+
+    // If the member is successfully deleted, dispatch an action with type DELETE_MEMBER
+    dispatch({ type: "DELETE_MEMBER", payload: memberId });
+
+    return { ok: true };
+  } catch (error) {
+    console.error("Operation failed:", error);
     return { ok: false, error };
   }
 };

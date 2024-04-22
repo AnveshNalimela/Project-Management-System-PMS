@@ -4,6 +4,12 @@ interface Member {
   password: string;
   name: string;
 }
+export interface MembersState {
+  members: Member[];
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage: string;
+}
 
 // Define the initial state
 export const initialState: MembersState = {
@@ -12,12 +18,6 @@ export const initialState: MembersState = {
   isError: false,
   errorMessage: "",
 };
-export interface MembersState {
-  members: Member[];
-  isLoading: boolean;
-  isError: boolean;
-  errorMessage: string;
-}
 
 // Next, I'll comment the `Action` interface
 
@@ -39,7 +39,8 @@ export type MembersActions =
   | { type: "FETCH_MEMBERS_REQUEST" }
   | { type: "FETCH_MEMBERS_SUCCESS"; payload: Member[] }
   | { type: "FETCH_MEMBERS_FAILURE"; payload: string }
-  | { type: "ADD_MEMBER_SUCCESS"; payload: Member };
+  | { type: "ADD_MEMBER_SUCCESS"; payload: Member }
+  | { type: "DELETE_MEMBER"; payload: number };
 
 export const reducer = (
   state: MembersState = initialState,
@@ -68,6 +69,12 @@ export const reducer = (
       // Here I'll insert new new project object, which is coming in this
       // `action.payload`, to the `projects` array present in state.
       return { ...state, members: [...state.members, action.payload] };
+    case "DELETE_MEMBER":
+      const updatedMembers = state.members.filter(
+        (member) => member.id !== action.payload
+      );
+      return { ...state, members: updatedMembers };
+
     default:
       return state;
   }

@@ -1,12 +1,13 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 
-import AccountLayout from "../layouts/accounts";
+import AccountLayout from "../layouts/account";
+import NotFound from "../pages/Notfound";
 import Logout from "../pages/logout";
 import Members from "../pages/members";
 import Projects from "../pages/projects";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
         element: <Members />,
       },
     ],
+  },
+  {
+    path: "notfound",
+    element: <NotFound />,
   },
 ]);
 export default router;
