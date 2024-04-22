@@ -13,10 +13,6 @@ export default function MemberListItems() {
   // and get access to projects state.
   let state: any = useMembersState();
   const dispatch = useMembersDispatch();
-
-  // Next, I'll destructure the state object to gain access to projects,
-  // isLoading, isError and errorMessage property.
-  const { members, isLoading, isError, errorMessage } = state;
   const handleRemoveMember = async (id: number) => {
     if (!dispatch) {
       console.error("Dispatch is not defined.");
@@ -33,6 +29,10 @@ export default function MemberListItems() {
       // Handle error, if any
     }
   };
+
+  // Next, I'll destructure the state object to gain access to projects,
+  // isLoading, isError and errorMessage property.
+  const { members, isLoading, isError, errorMessage } = state;
 
   // If `isLoading` is true, and there are no projects, in that case,
   // I'll show a loading text
@@ -53,7 +53,7 @@ export default function MemberListItems() {
         <div
           id={member.id}
           key={member.id}
-          className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className=" member block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <h5 className="mb-2  font-medium tracking-tight text-gray-900 dark:text-white">
             Name: {member.name}
@@ -66,6 +66,7 @@ export default function MemberListItems() {
             className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600"
           >
             <img className="h-8" src={Delete} alt="Delete Icon" />
+            Delete
           </button>
         </div>
       ))}
