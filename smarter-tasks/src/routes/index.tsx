@@ -1,14 +1,16 @@
-import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import AccountLayout from "../layouts/account";
 import NotFound from "../pages/Notfound";
 import Logout from "../pages/logout";
 import Members from "../pages/members";
+import ProjectDetails from "../pages/project_details";
 import Projects from "../pages/projects";
 import ProjectContainer from "../pages/projects/ProjectContainer";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
+import NewTask from "../pages/tasks/NewTask";
+import TaskDetailsContainer from "../pages/tasks/TaskDetailsContainer";
 import ProtectedRoute from "./ProtectedRoutes";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,25 +44,21 @@ const router = createBrowserRouter([
           { index: true, element: <Projects /> },
           {
             path: ":projectID",
-            element: (
-              <>
-                Show project details <Outlet />
-              </>
-            ),
+            element: <ProjectDetails />,
             children: [
               { index: true, element: <></> },
               {
                 path: "tasks",
                 children: [
-                  { index: true, element: <Navigate to="../" replace /> },
+                  { index: true, element: <Navigate to="../" /> },
                   {
                     path: "new",
-                    element: <>Show Modal window to create a task</>,
+                    element: <NewTask />,
                   },
                   {
                     path: ":taskID",
                     children: [
-                      { index: true, element: <>Show Task Details</> },
+                      { index: true, element: <TaskDetailsContainer /> },
                     ],
                   },
                 ],
