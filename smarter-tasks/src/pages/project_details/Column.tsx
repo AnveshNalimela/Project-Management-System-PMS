@@ -6,7 +6,7 @@ import Task from "./Task";
 const Container = (props: React.PropsWithChildren) => {
   // We will use flex to display lists as columns
   return (
-    <div className="m-2 border border-gray rounded w-1/3 flex flex-col">
+    <div className="m-2 p-5 rounded border border-gray rounded w-1/3 flex flex-col">
       {props.children}
     </div>
   );

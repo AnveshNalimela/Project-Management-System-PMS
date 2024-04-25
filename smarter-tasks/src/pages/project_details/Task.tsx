@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Link, useParams } from "react-router-dom";
-import comment from "../../assets/images/comment.png";
 import { deleteTask } from "../../context/task/actions";
 import { useTasksDispatch } from "../../context/task/context";
 import { TaskDetails } from "../../context/task/types";
@@ -17,7 +16,7 @@ const Task = forwardRef<
   return (
     <div ref={ref} {...props} className="m-2 flex">
       <Link
-        className="TaskItem w-full shadow-md border border-slate-100 bg-white"
+        className="TaskItem w-full py-2 shadow-md border border-slate-100 bg-white"
         to={`tasks/${task.id}`}
       >
         <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
@@ -33,15 +32,7 @@ const Task = forwardRef<
               Assignee: {task.assignedUserName ?? "-"}
             </p>
           </div>
-          <button
-            className="cursor-pointer h-4 w-4 rounded-full my-5 mr-5"
-            onClick={(event) => {
-              event.preventDefault();
-              addComment(taskDispatch, projectID ?? "", task);
-            }}
-          >
-            <img src={comment}></img>
-          </button>
+
           <button
             className="deleteTaskButton cursor-pointer h-4 w-4 rounded-full my-5 mr-5"
             onClick={(event) => {

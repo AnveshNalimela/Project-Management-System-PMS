@@ -53,20 +53,25 @@ export default function MemberListItems() {
         <div
           id={member.id}
           key={member.id}
-          className=" member block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className=" member flex block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
-          <h5 className="mb-2  font-medium tracking-tight text-gray-900 dark:text-white">
-            Name: {member.name}
-          </h5>
-          <h5 className="mb-2 font-medium tracking-tight text-gray-900 dark:text-white">
-            Email: {member.email}
-          </h5>
+          <div>
+            <h5 className="mb-2  font-medium tracking-tight text-gray-900 dark:text-white">
+              <strong> Name :</strong> {member.name}
+            </h5>
+            <h5 className="mb-2 font-medium tracking-tight text-gray-900 dark:text-white">
+              <strong>Email: </strong> {member.email}
+            </h5>
+          </div>
           <button
             onClick={() => handleRemoveMember(member.id)}
-            className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600"
+            className=" ml-40 text-white  rounded-md "
           >
-            <img className="h-8" src={Delete} alt="Delete Icon" />
-            Delete
+            <img
+              className="h-10 w-10  hover:bg-red-600 rounded"
+              src={Delete}
+              alt="Delete Icon"
+            />
           </button>
         </div>
       ))}

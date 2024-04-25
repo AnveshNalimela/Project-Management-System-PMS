@@ -8,6 +8,8 @@ import { useProjectsState } from "../../context/projects/context";
 import { updateTask } from "../../context/task/actions";
 import { useTasksDispatch, useTasksState } from "../../context/task/context";
 import { TaskDetailsPayload } from "../../context/task/types";
+import CommentList from "../comment/CommentList";
+import NewComment from "../comment/NewComment";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
@@ -45,10 +47,7 @@ const TaskDetails = () => {
   const [selectedPerson, setSelectedPerson] = useState(
     selectedTask.assignedUserName ?? ""
   );
-  const {
-    register,
-    handleSubmit,
-  } = useForm<TaskFormUpdatePayload>({
+  const { register, handleSubmit } = useForm<TaskFormUpdatePayload>({
     defaultValues: {
       title: selectedTask.title,
       description: selectedTask.description,
@@ -144,7 +143,7 @@ const TaskDetails = () => {
                         value={selectedPerson}
                         onChange={setSelectedPerson}
                       >
-                        <Listbox.Button className="w-full border rounded-md py-2 px-3 my-2 text-gray-700 text-base text-left">
+                        <Listbox.Button className="w-full border rounded-md py-2 h-8 px-3 my-2 text-gray-700 text-base text-left">
                           {selectedPerson}
                         </Listbox.Button>
                         <Listbox.Options className="absolute mt-1 max-h-60 rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
@@ -197,6 +196,8 @@ const TaskDetails = () => {
                         Cancel
                       </button>
                     </form>
+                    <CommentList />
+                    <NewComment />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
