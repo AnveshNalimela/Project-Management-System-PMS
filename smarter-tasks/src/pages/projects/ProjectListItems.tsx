@@ -6,10 +6,6 @@ export default function ProjectListItems() {
   const { projects, isLoading, isError, errorMessage } = state;
   console.log(projects);
 
-  // This check is to validate ErrorBoundary Implementation. Remove this before milestone submission
-  if (projects.length === 0) {
-    throw Error("Error!!!");
-  }
   if (projects.length === 0 && isLoading) {
     return <span>Loading...</span>;
   }
