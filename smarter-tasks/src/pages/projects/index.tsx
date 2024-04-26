@@ -3,9 +3,6 @@ import ErrorBoundary from "../../components/ErrorBoundary";
 import NewProject from "./NewProject";
 const ProjectList = React.lazy(() => import("./ProjectList"));
 
-const SuspenseLoading = () => (
-  <div className="suspense-loading">Loading...</div>
-);
 const Projects = () => {
   return (
     <>
@@ -16,7 +13,7 @@ const Projects = () => {
         <NewProject />
       </div>
       <ErrorBoundary>
-        <Suspense fallback={<SuspenseLoading />}>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
           <ProjectList />
         </Suspense>
       </ErrorBoundary>
