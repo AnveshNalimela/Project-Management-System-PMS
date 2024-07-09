@@ -33,6 +33,7 @@ export default function MemberListItems() {
   // Next, I'll destructure the state object to gain access to projects,
   // isLoading, isError and errorMessage property.
   const { members, isLoading, isError, errorMessage } = state;
+  // This check is to validate ErrorBoundary Implementation. Remove this before milestone submission
 
   // If `isLoading` is true, and there are no projects, in that case,
   // I'll show a loading text
